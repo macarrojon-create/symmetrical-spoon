@@ -1314,7 +1314,7 @@ class SectionCard extends StatelessWidget {
     final factor = c == null ? 1.0 : (c.spacing == 'roomy' ? 1.10 : c.spacing == 'compact' ? .94 : 1.0);
     final resolved = EdgeInsets.fromLTRB(padding.left * factor, padding.top * factor, padding.right * factor, padding.bottom * factor);
     final configuredMax = c?.contentMaxWidth ?? 840.0;
-    final maxWidth = Responsive.width(context) >= 900 ? math.min(configuredMax, 980) : double.infinity;
+    final maxWidth = Responsive.width(context) >= 900 ? math.min(configuredMax, 980.0) : double.infinity;
     return Center(
       child: ConstrainedBox(
         constraints: BoxConstraints(maxWidth: maxWidth),
@@ -3298,8 +3298,6 @@ class CustomizationPage extends StatelessWidget {
         Switch.adaptive(value: value, onChanged: onChanged),
       ]),
     );
-
-    Widget settingGrid(List<Widget> fields) => fieldGrid(fields);
 
     return ListView(padding: const EdgeInsets.only(bottom: 34), children: [
       PageIntro(title: controller.tr('customization'), subtitle: 'Aquí puedes controlar la personalidad global y el comportamiento visual de cada zona. Los controles se reorganizan automáticamente para conservar legibilidad en móviles, tablets y pantallas grandes.'),
