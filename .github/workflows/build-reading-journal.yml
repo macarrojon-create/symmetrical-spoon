@@ -1,0 +1,127 @@
+name: Build READBLOOM
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Qué quieres generar de READBLOOM'
+        required: true
+        default: android
+        type: choice
+        options:
+          - android
+          - windows
+          - both
+
+permissions:
+  contents: read
+
+jobs:
+  android:
+    if: ${{ inputs.target == 'android' || inputs.target == 'both' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar proyecto
+        uses: actions/checkout@v6
+
+      - name: Instalar Flutter estable
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Crear soporte Android
+        run: flutter create --platforms=android .
+
+      - name: Aplicar nombre READBLOOM a Android
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('android/app/src/main/AndroidManifest.xml')
+          if p.exists():
+              s = p.read_text()
+              s = s.replace('android:label="${applicationName}"', 'android:label="READBLOOM"')
+              s = s.replace('android:label="readbloom"', 'android:label="READBLOOM"')
+              s = s.replace('android:label="reading_journal"', 'android:label="READBLOOM"')
+              p.write_text(s)
+          PY
+
+      - name: Instalar dependencias
+        run: flutter pub get
+
+      - name: Generar iconos y recursos de marca
+        run: dart run flutter_launcher_icons
+
+
+      - name: Comprobar código
+        run: flutter analyze
+
+      - name: Generar APK
+        run: flutter build apk --release
+
+      - name: Subir APK
+        uses: actions/upload-artifact@v7
+        with:
+          name: READBLOOM-Android
+          path: build/app/outputs/flutter-apk/app-release.apk
+          if-no-files-found: error
+          retention-days: 30
+
+  windows:
+    if: ${{ inputs.target == 'windows' || inputs.target == 'both' }}
+    runs-on: windows-latest
+    steps:
+      - name: Descargar proyecto
+        uses: actions/checkout@v6
+
+      - name: Instalar Flutter estable
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Crear soporte Windows
+        run: flutter create --platforms=windows .
+
+      - name: Aplicar nombre READBLOOM a Windows
+        shell: pwsh
+        run: |
+          $files = @(
+            'windows/runner/Runner.rc',
+            'windows/runner/CMakeLists.txt'
+          )
+          foreach ($file in $files) {
+            if (Test-Path $file) {
+              $s = Get-Content $file -Raw
+              $s = $s -replace 'Reading Journal', 'READBLOOM'
+              $s = $s -replace 'reading_journal', 'readbloom'
+              $s = $s -replace 'ReadingJournal', 'READBLOOM'
+              $s = $s -replace 'readbloom', 'READBLOOM'
+              Set-Content $file $s
+            }
+          }
+
+      - name: Instalar dependencias
+        run: flutter pub get
+
+      - name: Generar iconos y recursos de marca
+        run: dart run flutter_launcher_icons
+
+      - name: Comprobar código
+        run: flutter analyze
+
+      - name: Generar aplicación Windows
+        run: flutter build windows --release
+
+      - name: Empaquetar Windows
+        shell: pwsh
+        run: Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath READBLOOM-Windows.zip -Force
+
+      - name: Subir Windows
+        uses: actions/upload-artifact@v7
+        with:
+          name: READBLOOM-Windows
+          path: READBLOOM-Windows.zip
+          if-no-files-found: error
+          retention-days: 30
