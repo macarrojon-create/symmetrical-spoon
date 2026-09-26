@@ -1,0 +1,49 @@
+READING JOURNAL V6
+
+Cambios principales:
+
+1. PERSONALIZACIÓN GLOBAL
+- Presets Cozy, Dark academia, Pastel y Minimal.
+- 12 paletas, estilos, ambientes y fondos.
+- Tarjetas, densidad, forma de portada, navegación y redondeado.
+- Escala de títulos, sombras, doodles, animaciones y modo oscuro.
+- Idioma y tipografía.
+
+2. BIBLIOTECA
+- Favoritos.
+- Etiquetas personales.
+- Progreso de lectura.
+- Búsqueda por título, autor, género y etiqueta.
+- Filtros y orden.
+- Acceso rápido para seguir leyendo.
+
+3. ESTADÍSTICAS
+- Racha de lectura.
+- Sesiones.
+- Terminados del mes.
+- Calendario con líneas, halos y doodles.
+- Estilos de calendario: suave, marcado, botánico y minimal.
+
+4. RETOS
+- Anual.
+- Mensual.
+- Periodo personalizado.
+- Libros, páginas o días de lectura.
+
+5. WRAPPED
+- Scrapbook, Editorial, Dreamy, Minimal y Poster.
+- Historia 9:16, vertical 4:5 y cuadrado.
+- Doodles, estrellas, botánico, papel y limpio.
+- Alineación, stickers, portadas y métricas seleccionables.
+
+6. BOOKISH
+- Cozy, Cottage, Gothic, Pastel y Minimal.
+- Madera, mármol, flotante y arcoíris.
+- Portadas, lomos o mezcla.
+- Formatos vertical, historia y cuadrado.
+- Decoración y escala ajustables.
+
+7. DATOS
+- Exportación de copia completa.
+- Restauración de copia.
+- Importación CSV con etiquetas y progreso cuando existen en el archivo.

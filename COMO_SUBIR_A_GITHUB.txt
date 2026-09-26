@@ -1,0 +1,13 @@
+PASOS SUPER SENCILLOS
+
+1. Descarga y descomprime ReadingJournal_GitHub.zip.
+2. En GitHub crea un repositorio vacío llamado ReadingJournal.
+3. Sube TODOS los archivos que hay dentro de esta carpeta.
+4. Entra en Actions.
+5. Pulsa Build READBLOOM.
+6. Pulsa Run workflow.
+7. Elige android.
+8. Pulsa Run workflow.
+9. Cuando termine en verde, abre la ejecución y descarga ReadingJournal-Android.
+
+No necesitas instalar Flutter ni Android Studio para que GitHub compile el APK.

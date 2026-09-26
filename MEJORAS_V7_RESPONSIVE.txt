@@ -1,0 +1,18 @@
+READBLOOM V7 — mejoras visuales
+
+- Interfaz adaptable a diferentes anchos de pantalla.
+- Biblioteca con columnas dinámicas y portadas proporcionales.
+- Cabecera y navegación adaptadas a teléfonos estrechos.
+- Más espacio y ancho de contenido configurable.
+- Más de 16 estéticas visuales con imágenes locales.
+- Más paletas y tipografías de sistema.
+- Nuevos controles de escala general, espaciado y ancho de contenido.
+- Se mantienen libros, retos, copias de seguridad e importación CSV.
+
+
+V7.1 — GALERÍA DE ESTÉTICAS MEJORADA
+- Corregida la clave Dark academia para que la galería y los presets usen el mismo identificador.
+- Las 16 estéticas de la galería son presets completos y aplican color, tipografía, fondo, tarjetas, forma, navegación, Wrapped, Bookish, densidad, espaciado y decoración.
+- Cada estética tiene un patrón decorativo de fondo diferente.
+- Las tarjetas de la galería muestran imagen, descripción, estado activo y muestras de color.
+- Se mantiene la adaptación responsive de la galería y del resto de la aplicación.
